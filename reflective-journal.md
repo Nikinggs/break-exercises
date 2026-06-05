@@ -6,21 +6,21 @@ QUESTION 01
 
 ![diagram](picture.jpg)
 
-As a WEB DEVELOPER, understanding how a browser takes HTML and turn it to what we see on screen from DOM to paint helps developer build faster websites, helps identify performance problem, know how rendering works help optimize user experience when a user opens a website, the broowser does not immediately display the page it first read the html document and then convert it into DOM Tree which represent all the element on the page. the browser then combine the DOM and CSS to create a render Tree containing only visible elements. then layout follows where size and position of eaxh element is calculated. finally the paint stage is where draws text, images, colors, and other visible element pn screen. so in conclusion understanding all of this is a very important aspect in being a great! WEB DEVELOPER.
+-As a WEB DEVELOPER, understanding how a browser takes HTML and turn it to what we see on screen from DOM to paint helps developer build faster websites, helps identify performance problem, know how rendering works help optimize user experience when a user opens a website, the broowser does not immediately display the page it first read the html document and then convert it into DOM Tree which represent all the element on the page. the browser then combine the DOM and CSS to create a render Tree containing only visible elements. then layout follows where size and position of eaxh element is calculated. finally the paint stage is where draws text, images, colors, and other visible element pn screen. so in conclusion understanding all of this is a very important aspect in being a great! WEB DEVELOPER.
 
 QUESTION 02
 
-The QUIC solves the TCP packet loss handling such that instaead of making everything wait for one missing piece QUIC allows different streams of data to continue independently so as a result of this websites can load faster and user experiences fewer interuptions. Also it has a native encryption built in for both speed and security improvement for better secured connection.
+-The QUIC solves the TCP packet loss handling such that instaead of making everything wait for one missing piece QUIC allows different streams of data to continue independently so as a result of this websites can load faster and user experiences fewer interuptions. Also it has a native encryption built in for both speed and security improvement for better secured connection.
 
 QUESTION 03
 
-Based on my experience using the JAMB Portal, i noticed it doesnt use proper HTML properly. the clues i observed is that navigation feels confusing especially when trying to locate specific information quickly thereby making accessibility difficult this suggest that semantic element such as header, nav and main are not effectively been in use and it will leads to difficulties for user who rely on assistive technologies to be able to access the page.
+-Based on my experience using the JAMB Portal, i noticed it doesnt use proper HTML properly. the clues i observed is that navigation feels confusing especially when trying to locate specific information quickly thereby making accessibility difficult this suggest that semantic element such as header, nav and main are not effectively been in use and it will leads to difficulties for user who rely on assistive technologies to be able to access the page.
 
 PRODUCT THINKING
 
 QUESTION 01
 
-Basically Semantic HTML helps search engines understand content structure and it ranks them in the order
+-Basically Semantic HTML helps search engines understand content structure and it ranks them in the order
 <main> this tells the search engine this is the primary content of the page. so the main blog goes here.
 <article> this tells the search engine this is a piece of content. so individual self-contained content goes here.
 <header> this tells the search engine this section provide important titles and introduction. so title, introduction, author information etc.. all goes here.
@@ -29,7 +29,7 @@ Basically Semantic HTML helps search engines understand content structure and it
 
 QUESTION 02
 
-since Edge Computing moves processing closeer to user. the computing benefit that would matter most includes 
+-since Edge Computing moves processing closeer to user. the computing benefit that would matter most includes 
 -lower latency ;- reduced delay in server response
 -faster real time update ;- keeps everyone synchrnised.
 -enhanced privacy ;- data can be processed locally without leaving the user's region.
@@ -38,7 +38,7 @@ ENGINEERING BEST PRACTICE
 
 QUESTION 01
 
-I will have to disagree because using <div> everywhere is not considered a good practice, considering accessibility, seo, maintainability and collaboration. now lets take it one by one, accessibility: screen reader understand the <nav> immediatly and understand thats a navigation bar then anoounce content properly. seo: search engines understand the function of <header> <main> <article> <footer> and each of their respective usefulness than just using <div> all through. maintainabilty: when other develper opens the code, it will be very difficult to maintain working on the code because its not self explanatory, hence why the use of semantic is important which immediately tells what each section does and code beco,es easier to mantain and debug. collaboration: this involve team works, and team work can only be faster when the code is easy to understand
+-I will have to disagree because using <div> everywhere is not considered a good practice, considering accessibility, seo, maintainability and collaboration. now lets take it one by one, accessibility: screen reader understand the <nav> immediatly and understand thats a navigation bar then anoounce content properly. seo: search engines understand the function of <header> <main> <article> <footer> and each of their respective usefulness than just using <div> all through. maintainabilty: when other develper opens the code, it will be very difficult to maintain working on the code because its not self explanatory, hence why the use of semantic is important which immediately tells what each section does and code beco,es easier to mantain and debug. collaboration: this involve team works, and team work can only be faster when the code is easy to understand
 
 
 CLASS 02 - Typography & Information Hierarchy
@@ -47,10 +47,10 @@ THEORY
 
 QUESTION 01
 
-The difference
+-The difference
 <em>emphasis: the text in it emphasised
 <i>italic: it just a text in an alternate style
-when would each be used.??
+-when would each be used.??
 <em> it is used when we want the screen reader to place an extra focal stress on the text within the <em> element
 <i> used when we want to style a text but not stressing its importance.
 example
@@ -66,7 +66,7 @@ reasons brower handle them that way
 
 QUESTION 03
 
-we use ARIA labels when an element already has the correct semantic html but lacks accessible text, maybe an svg was used in the text context.
+-we use ARIA labels when an element already has the correct semantic html but lacks accessible text, maybe an svg was used in the text context.
 we fix html when we are using the wrong html element.
 -when to use aria llabel
 <nav aria-label="Main navigation">...</nav>
@@ -88,7 +88,7 @@ PRODUCT THINKING
 
 QUESTION 01
 
-If im designing an API documentation page and i want my user to scan quickly, here is how i will structure my information hierarchy lets say im building a weather API documentation
+-If im designing an API documentation page and i want my user to scan quickly, here is how i will structure my information hierarchy lets say im building a weather API documentation
 
 <h1> Weather API documentation
 <p>This where the version type and 
@@ -100,17 +100,18 @@ If im designing an API documentation page and i want my user to scan quickly, he
 <h3> get weather forecast
 <h2> Error codes: this setion would explain common error such as invalid api keys, rate limits
 
+
 CLASS 03 - Modern Assets & Linking
 
 THEORY
 
 QUESTION 01
 
-Firstly a 5MB image is too large for a hero image, so what i will do is i will convert the image to modern format like .avif and .webp who has smaller fle size and excellent image quality using tools like SQUOOSH website or SHARP installed on vscode because both tools are easy to use. And then resize the image to different display size for mobile, tablet and desktop using the same tools. 
+-Firstly a 5MB image is too large for a hero image, so what i will do is i will convert the image to modern format like .avif and .webp who has smaller fle size and excellent image quality using tools like SQUOOSH website or SHARP installed on vscode because both tools are easy to use. And then resize the image to different display size for mobile, tablet and desktop using the same tools. 
 
 QUESTION 02
 
-SRCSET is an html attribute that allows the browser to choose the most appropriate image size based on screen size, device resolution, and available bandwith by providing multiple version of the image. I will use it whwn i have same image of different size for mobile, tablet and desktop.
+-SRCSET is an html attribute that allows the browser to choose the most appropriate image size based on screen size, device resolution, and available bandwith by providing multiple version of the image. I will use it whwn i have same image of different size for mobile, tablet and desktop.
 
 CASE SCENARIO
 After converting and resizeing the 5 mb png image to .avif and having different version for mobile, tablet and desktop. here is how it will be handled
@@ -124,7 +125,212 @@ After converting and resizeing the 5 mb png image to .avif and having different 
 
 QUESTION 03
 
+-rel="noopener" is important when using target="_blank" to prevent new page from interfereing with the original one making browsing more secure. 
+-The security vulnerability it prevents includes phishing, when malicious website could potentially redirect the original tab to a fake website and trick user into entering sensitive information.
+-The simple explanation of this is giving a visitor access to a room in the house but they dont have acccess to the whole house, so noopener is used to limit the viitor acess, without the noopener the visitor may decide to access all rooms.
+
+ENGINEERING THINKING
+
+QUESTION 01
+
+My optimization strategy includes
+-I would use modern image format such as AVIF, Webp because they provide smaller file size with excellent quality
+-I would implement Lazy Loading such that only image visible on screen should load immediately, remaining load as user scrolls, without lazy loading the 50 image loads immediately thereby causing slow page loading, increased bandwith usage, low mobile performance and higher data consumpiton
+<img src="product.avif"
+     loading="lazy"
+     alt="Product name">
+-I would use Responsive Images srcset, different device should receive different image sizes for faster page loading and less date usage.
 
 
+CLASS 04 - Modern Forms & User Experience
 
+THEORY
+
+QUESTION 01
+
+-when a user submit invalid email
+
+the user experience flow happens on client-side-only validation 
+->user enters invalid email ->user clicks submit ->browser detect error ->form is not submitted ->error message displayed [please enter a valid email address]
+
+the user experience flow happens on server-side-only validation 
+->user enters invalid email ->user clicks submit ->data sent to server ->server validate email ->server reject request ->error message displayed [please enter a valid email address]
+
+-Why both is needed is because the client-side-only validation can be bypassed, but the server-side-only validation is more secured and cannot be bypassed but it may create unnecessar delay in validation error. so combination of both provides fast feedback and strong security.
+
+QUESTION 02
+
+-The autocomplete attribute is an attribute that help the browser automatically fill form fields using data the user has previously saved.
+
+list 5 diff values
+-autocomplete="name" ->used for a user full name in registration form
+-autocomplete="email" ->used for email addresses on loging or sign up forms
+-autocomplete="tel" ->is used in phone number fields in contact forms
+-autocomplete="street-address" -> used to automatically fill a user address
+-autocomplete="country" -> used in country field form
+
+PRODUCT THINKING
+
+QUESTION 01
+
+How i will design the form to handle the issue
+-Progress Saving; as user complete each step, i would save their data automatically using possible mesthod such as local storage, session storage, database etc...
+-Validation Strategy; i will use both client-side validation to check immediately and improve user experience, and server-side validation to protect data integrity. 
+-show helpful error message instantly when internet is lost or when there is an invalid input
+
+QUESTION 02
+
+when i would use Native select by default
+-Accessibility: it already support keyboard navigation, screen readers.
+-mobile UX: user gets the familiar mobile interface
+-Development Time: faster
+
+when i would use custom dropdown: if product requirement goes beyond what <select> can do.
+-Accessibility: i have to handle keyboard navigation and screen reader needs aria attribte because without proper implementation, accessibilty suffers.
+-mobile UX: i will to handle the custom dropdown to provide significant value
+-Development Time: so much work to do
+
+summary: i will use native <select> whenever the list of option is relatively simple and doesn not require advance functionality, but if the design require search, multi-select, icons, dynamic data, rich interactions ill use custom dropdown.
+
+ENGINEERING BEST PRACTICE
+
+QUESTION 01
+
+-The password field should have a visible label, a password input, a show/hide toggle button, a strength meter, and a requirement checklist.
+
+<label for="password">Password</label>
+<input id="password"
+       type="password"
+       arai-decribedby="password-requirements password-strength">
+
+
+CLASS 05 - Modern Forms & User Experience
+
+THEORY
+
+QUESTION 01     
+
+![diagram](picture.jpg)
+
+-if two adjacent divs have those value, the amount of space between them will be the highest value, this occurs because of margin colapsing where adjacent vertical margins merge and the browser uses the larger of the two margins instead of adding them together. 
+
+QUESTION 02 
+
+-The CSS specificity hierarchy is how strong a selector is, and which is applied when multiple selector target the same element. the hierarchy follows inline, then id's, then class/attribute , then element. 
+
+for .header nav ul li a (0-id, 1-class, 4-element)
+for nav a.active (0-id, 1-class 2-element, )
+for .nav-links a (0-id, 1-class, 1-element)
+so since all the 3 has no id, and same number of class, the selector with the highest number of element wins.
+
+QUESTION 03
+-The CASCADE in CSS is the process by which the browser determine which css rule will be applied to an element.
+-case scenario where cascade will save, if a .card class already defines padding, background color and text color, a .featured-card may only needs to override background color and not necessarily putting the padding and text color.
+
+ENGINEERING THINKING
+
+QUESTION 01
+-What happened is by default Css uses box-sizing: content-box;, with content-box total width = width + padding + border. hence the cause of the increase in width
+-The fix is that we use box-sizing: border-box; here total width = width, hence our problem is solved.
+
+QUESTION 02 
+
+/* content-box is the default box model, width only applies to the content area, actual width 200px + left padding 30px + right padding 30px + left border 5px + right border 5px. toatal width = 270px */
+.box { 
+        width: 200px;
+        padding 30px;
+        border 5px solid red;
+        box-sizing: content-box;
+}
+
+/* border-box includes padding and border insdie the specified width total width remains 200px, the content area shrinks to make rom for the padding and border*/
+
+.box2 { 
+        width: 200px;
+        padding 30px;
+        border 5px solid red;
+        box-sizing: border-box;
+}
+
+
+CLASS 10 - Memory & Variables
+
+THEORY
+
+QUESTION 01
+
+-The difference in terms of: scope, hoisting, and reassignment
+-let: block scope, hoisted, can be reassignment.
+-const: block scope, hoisted, cannot be reassignment.
+-var: function scope, hoisted, can be reassignment.
+
+-const does not prevent mutation of objects/array because it only prevent the variable from being reassigned to a different object or arrays.
+
+QUESTION 02
+
+-Temporal Dead Zone is a period between when a let or const variable is hoisted and whwn its declaration is raeched in the code, during this period, the variable exist but cannot be accessed
+-TDZ exist to prevent bug caused by accidentally using variables before they have been initialized, it help developer catch mistakes early
+-Example if code tries to log a variable before it is declared, the TDZ will throw an errror immmediately rather than allowng the program to continue running with an undefined value.
+
+QUESTION 03
+
+-stack
+name -> 'sarah'
+age -> 22
+result -> 'hello, undefined'
+
+-heap
+score -> [90, 85, 88]
+function greet(person)
+
+PRODUCT THINKING
+
+QUESTION 01
+
+-the display value: let displayValue = '0', let will be used because the display changes constantly.
+-the operator: let operator = null; let will be used as the operator change whenever user selests new operator
+-the previous operand: let will be used as the variable is repeatedly assign.
+
+
+CLASS 11 - Control Flow & Comparison
+
+THEORY
+
+QUESTION 01
+
+-The difference between === & ==
+== (loose equality) compares value after type conversion. eg javascript sees 5 == '5', then converts '5' to 5 and then compares 5 == 5 to be true
+=== (strict equality) compare values and types without type conversion. eg 5 === '5', compare value 5 to be number and '5' to be string, then compare 5 === '5' to be false
+
+-from the example given a loose equality can cause a bug.
+
+QUESTION 02
+
+-Optional chaining (?.) allow us to access a nested property safely or call a method without causing an error if something in the chain is null or undefined.
+-3 example where it prevent error: user.address?.city access city only if address existed. user.getName.?() callback only f it has been provided
+-one ex where it might hide a bug: using user?.email when an email is required may silently rturn undefined and allow application to continue instaead of revealing the important data missing.
+
+summary: optional chan is used when the value is genuinely optional e.g secondary address, profile picture, optional callback. we avoid using when the value is required for the application e.g user id, email required login, critical configuration.
+
+QUESTION 03
+
+-nullish coalescing (??) returns the rigth side only when the left side is null or undefined
+-How it is diffeent from ||: the || treat any falsy value as missing, but with ?? its neither null nor undefined
+-example: let score = 0;
+          let pts = score ?? 10;
+          the value 0 will be displayed cause 0 is valid
+
+on the other part
+          let score = 0;
+          let pts = score || 10;
+          the value 10 will be displayed caused || see the value 0 as falsy, hence it will ignore it
+
+ENGINEERING THINKING
+
+QUESTION 01
+
+validate user input for, name(required) age(number 18 - 99) email(valid format) preferences(optional object with nested properties). val logic using typeof, op chaain, nulll coal.
+-function validatUser(user) {
+        const errors = []
+}
 
