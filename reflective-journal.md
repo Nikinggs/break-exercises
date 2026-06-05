@@ -4,7 +4,7 @@ THEORY
 
 QUESTION 01
 
-![diagram](picture.jpg)
+![diagram](images/class%2001%20dom.jpeg)
 
 -As a WEB DEVELOPER, understanding how a browser takes HTML and turn it to what we see on screen from DOM to paint helps developer build faster websites, helps identify performance problem, know how rendering works help optimize user experience when a user opens a website, the broowser does not immediately display the page it first read the html document and then convert it into DOM Tree which represent all the element on the page. the browser then combine the DOM and CSS to create a render Tree containing only visible elements. then layout follows where size and position of eaxh element is calculated. finally the paint stage is where draws text, images, colors, and other visible element pn screen. so in conclusion understanding all of this is a very important aspect in being a great! WEB DEVELOPER.
 
@@ -210,7 +210,7 @@ THEORY
 
 QUESTION 01     
 
-![diagram](picture.jpg)
+![diagram](images/class%2005.jpeg)
 
 -if two adjacent divs have those value, the amount of space between them will be the highest value, this occurs because of margin colapsing where adjacent vertical margins merge and the browser uses the larger of the two margins instead of adding them together. 
 
@@ -330,7 +330,229 @@ ENGINEERING THINKING
 QUESTION 01
 
 validate user input for, name(required) age(number 18 - 99) email(valid format) preferences(optional object with nested properties). val logic using typeof, op chaain, nulll coal.
--function validatUser(user) {
-        const errors = []
+-function validateUser(user) {
+  const errors = [];
+
+  // Name validation
+  if ( typeof user.name !== "string" || user.name.trim() === "" ) 
+    { errors.push("Name is required."); }
+
+  // Age validation
+  if ( typeof user.age !== "number" || user.age < 18 || user.age > 99 ) 
+  { errors.push("Age must be a number between 18 and 99."); }
+
+  // Email validation
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if ( typeof user.email !== "string" || !emailPattern.test(user.email) ) 
+  { errors.push("Please enter a valid email address."); }
+
+  // Preferences (optional)
+  if ( user.preferences !== undefined && typeof user.preferences !== "object" ) 
+  { errors.push("Preferences must be an object."); }
+
+  // Optional chaining
+  const theme = user.preferences?.theme ?? "light";
+
+  const notifications = user.preferences?.notifications ?? true;
+
+  return {
+    valid: errors.length === 0,
+    errors,
+    preferences: {
+      theme,
+      notifications
+    }
+  };
 }
+
+example 1: valid user
+
+const user = {
+  name: "Sarah",
+  age: 22,
+  email: "sarah@gmail.com",
+  preferences: {
+    theme: "dark",
+    notifications: false
+  }
+};
+
+console.log(validateUser(user));
+
+output:
+{
+  valid: true,
+  errors: [],
+  preferences: {
+    theme: "dark",
+    notifications: false
+  }
+}
+
+example 2: missing preference
+
+const user = {
+  name: "Adeniyi",
+  age: 28,
+  email: "nikinggs101@gmail.com"
+};
+console.log(validateUser(user));
+
+so because of:
+user.preferences?.theme ?? "light"
+
+output becomes:
+{
+  theme: "light",
+  notifications: true
+}
+
+example 3: invalid input
+
+const user = {
+  name: "",
+  age: 120,
+  email: "wrong-email"
+};
+console.log(validateUser(user));
+
+output:
+{
+  valid: false,
+  errors: [
+    "Name is required.",
+    "Age must be a number between 18 and 99.",
+    "Please enter a valid email address."
+  ]
+}
+
+QUESTION 02
+
+function calculateGrade(scores, weights, passingGrade) {
+
+
+  // Validation
+  if (
+    !Array.isArray(scores) ||
+    !Array.isArray(weights)
+  ) {
+    return "Scores and weights must be arrays.";
+  }
+
+  if (scores.length === 0) {
+    return "At least one score is required.";
+  }
+
+  if (scores.length !== weights.length) {
+    return "Scores and weights must have the same length.";
+  }
+
+  // Check total weight
+  const totalWeight = weights.reduce(
+    (sum, weight) => sum + weight,
+    0
+  );
+
+  if (totalWeight !== 100) {
+    return "Weights must total 100%.";
+  }
+
+  // Calculate weighted average
+  let average = 0;
+
+  for (let i = 0; i < scores.length; i++) {
+
+    if (
+      typeof scores[i] !== "number" ||
+      scores[i] < 0 ||
+      scores[i] > 100
+    ) {
+      return `Invalid score at position ${i + 1}`;
+    }
+
+    average += scores[i] * (weights[i] / 100);
+  }
+
+  // Pass / Fail using ternary
+  const status =
+    average >= passingGrade
+      ? "Pass"
+      : "Fail";
+
+  // Letter Grade using ternary operators
+  const letterGrade =
+    average >= 90 ? "A" :
+    average >= 80 ? "B" :
+    average >= 70 ? "C" :
+    average >= 60 ? "D" :
+    "F";
+
+  // Distinction using logical operator
+  const distinction =
+    average >= 90 && status === "Pass"
+      ? "Yes"
+      : "No";
+
+  return {
+    average: average.toFixed(2),
+    status,
+    letterGrade,
+    distinction
+  };
+}
+const scores = [90, 80, 100]
+const weights = [30, 30, 40]
+
+console.log(
+  calculateGrade(
+    scores,
+    weights,
+    60
+  )
+);
+console.log(
+  calculateGrade(
+    [70, 65, 60], 
+    [40, 30, 30], 
+    70))
+
+/*
+output: {
+  average: "91.00",
+    status: "pass"
+    letterGrade: "A"
+    distinction: "Yes"
+}
+    
+
+output2:
+{
+    "average": "65.50",
+    "status": "Fail",
+    "letterGrade": "D",
+    "distinction": "No"
+}
+
+*/
+
+ Edge Cases Handled
+-empty scores, at least one score is required
+-weight must total 100%
+-different lenght, score and weight must have same length
+-invalid score, must be between 0-100
+
+ Required concept
+-ternary operator
+-logical operator
+
+
+CLASS 12 - Control Flow & Comparison
+
+THEORY
+
+QUESTION 01
+
+
+
 
