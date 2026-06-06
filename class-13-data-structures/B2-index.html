@@ -1,9 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>drag and drop</title>
+  <title>kanban board</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+
+<body class="bg-slate-100 min-h-screen p-6">
+
+<header class="mb-8">
+
+  <h1
+    class="text-4xl font-bold text-center"
+  >
+    Kanban Board
+  </h1>
+
+</header>
+
+<main>
+
+  <section
+    class="text-center mb-6"
+  >
+
+    <button
+      id="addBtn"
+      class="bg-blue-600 text-white px-4 py-2 rounded"
+    >
+      Add Task
+    </button>
+
+  </section>
+
+  <section
+    aria-label="Kanban Board Columns"
+    class="grid md:grid-cols-3 gap-6"
+  >
+
+    <section>
+
+      <h2
+        class="text-xl font-bold mb-3"
+      >
+        To Do
+      </h2>
+
+      <div
+        id="todo"
+        class="column bg-white rounded p-4 min-h-[400px] shadow"
+        data-status="todo"
+      ></div>
+
+    </section>
+
+    <section>
+
+      <h2
+        class="text-xl font-bold mb-3"
+      >
+        In Progress
+      </h2>
+
+      <div
+        id="progress"
+        class="column bg-white rounded p-4 min-h-[400px] shadow"
+        data-status="progress"
+      ></div>
+
+    </section>
+
+    <section>
+
+      <h2
+        class="text-xl font-bold mb-3"
+      >
+        Done
+      </h2>
+
+      <div
+        id="done"
+        class="column bg-white rounded p-4 min-h-[400px] shadow"
+        data-status="done"
+      ></div>
+
+    </section>
+
+  </section>
+
+</main>
+
   <script src="B2-script.js"></script>
 </body>
 </html>

@@ -553,6 +553,33 @@ THEORY
 
 QUESTION 01
 
+-A function declaration is created using the function keyword followed by a function name
 
+-A functon expression stores a function inside a variable
+ difference
+-the function itself is declared directly in the declaration while the functin is assigned to a variable in the expression.
+ Hoisting
+-it is the javascrpt behaviour of processing declaration before executing the code 
+
+
+
+📝 Self-Assessment Template
+
+Copy this template to the end of your Reflection Journal and fill it in honestly.
+
+BEFORE THIS BREAK, I KNEW…
+(List 3 things)
+
+DURING THIS BREAK, I LEARNED…
+(List 3 things)
+
+I'M STILL CONFUSED ABOUT…
+(2 things — be honest)
+
+MY GROWTH AREAS…
+(3 specific things)
+
+ONE THING I'LL DO DIFFERENTLY IN THE NEXT PROJECT…
+(1 specific thing)
 
 
