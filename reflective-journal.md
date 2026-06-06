@@ -561,25 +561,183 @@ QUESTION 01
  Hoisting
 -it is the javascrpt behaviour of processing declaration before executing the code 
 
+QUESTION 02
+ A pure function is a function that
+-Always returns the same output for the same input.
+-Does not modify or depend on anything outside itself (no side effects).
+
+-Example of a Non-Pure Function
+
+let total = 0;
+
+function addToTotal(value) {
+  total += value;
+  return total;
+}
+
+addToTotal(5);
+
+Output: 5
+
+Then: addToTotal(5);
+
+Output: 10
+
+Notice something important: The input is still: 5
+
+but the output changed.
+
+-Why it is not a Pure function is because it depends on an external variable: let total = 0; and modifies it to
+total += value;.
+This is called a side effect.
+
+The function’s result depends not only on its arguments but also on the current state of total.
+
+QUESTION 03
+
+-callback is a function passed as an argument to another function, so that it can be executed later.
+-higher-order function is a function that accepts another function as an argument, or Returns a function.
+-they are fundamental to JavaScript because they power event handling, timers, asynchronous operations, and many built-in methods. They allow developers to write more modular, reusable, and dynamic code.
+
+PRODUCT THINKING
+
+QUESTION 01
+
+-Addition Function: the purpose is Adds two numbers together.
+
+Inputs: a, b
+Output: a + b
+
+Example
+
+function add(a, b) {
+  return a + b;
+}
+add(5, 3);
+
+Output: 8
+
+-Subtraction Function: the purpose is to Subtracts one number from another.
+
+Inputs: a, b
+Output: a - b
+
+Example
+
+function subtract(a, b) {
+  return a - b;
+}
+subtract(10, 4);
+
+Output: 6
+
+-Multiplication Function: the purpose is to Multiplies two numbers.
+
+Inputs: a, b
+
+Output: a * b
+
+Example
+
+function multiply(a, b) {
+  return a * b;
+}
+multiply(6, 7);
+
+Output: 42
+
+-Division Function: the purpose is to Divides one number by another.
+
+Inputs: a, b
+
+Output: a / b
+
+Example
+
+function divide(a, b) {
+  if (b === 0) {
+    throw new Error("Cannot divide by zero");
+  }
+
+  return a / b;
+}
+
+divide(20, 5);
+
+Output: 4
+
+-Square Root Function: the purpose is to Calculates the square root of a number.
+
+Inputs: number
+
+Output: √number
+
+Example
+
+function squareRoot(number) {
+  if (number < 0) {
+    throw new Error(
+      "Cannot calculate square root of a negative number"
+    );
+  }
+
+  return Math.sqrt(number);
+}
+
+squareRoot(25);
+
+Output: 5
+
+ Pure functions offer several advantages:
+
+-Predictability: The same input always produces the same output. add(2, 3);
+
+will always return: 5
+
+-Easier Testing: we only need to provide inputs and check outputs. No setup of global variables, DOM elements, or APIs is required.
+
+-Easier Debugging: If a calculation is incorrect, we only need to inspect the function and its arguments.
+
+-Reusability: Pure functions can be used anywhere in the application without worrying about hidden side effects.
+
+-Reliability: A pure function does not change external variables or application state, reducing unexpected bugs.
+
+
+
+
+
+
+
 
 
 📝 Self-Assessment Template
 
-Copy this template to the end of your Reflection Journal and fill it in honestly.
 
 BEFORE THIS BREAK, I KNEW…
 (List 3 things)
 
+-Html element and its attribute
+-vanilla css and tailwindcss how its used to design and style webpage
+-Few thing about javascript which include object, array, loops, function and dom manipulation to some extent.
+
 DURING THIS BREAK, I LEARNED…
 (List 3 things)
+-i learned more about object, array and loops
+-dom manipulation to create, push value and get value from an element
+-how to apply logic step by step, even though im yet to get it perfectly especially for complex project.
 
 I'M STILL CONFUSED ABOUT…
 (2 things — be honest)
+-callbacks, arrow function
+-how to combine different javascript syntax to arrive at a final product 
 
 MY GROWTH AREAS…
 (3 specific things)
+-understood how to use html perfectly
+-ive understood some specific part of javascript
+-improved on tailwindcss
 
 ONE THING I'LL DO DIFFERENTLY IN THE NEXT PROJECT…
 (1 specific thing)
-
+-i will work on how to write down my steps before jumping on the code.
 

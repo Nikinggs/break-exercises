@@ -2,8 +2,143 @@
 <html lang="en">
 <head>
   <title>dynamic table</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+
+<body class="bg-slate-100">
+
+<header class="py-6">
+
+  <div class="max-w-6xl mx-auto">
+
+    <h1
+      class="text-3xl font-bold"
+    >
+      Employee Management Dashboard
+    </h1>
+
+  </div>
+
+</header>
+
+<main
+  class="max-w-6xl mx-auto px-4"
+>
+
+  <section
+    aria-labelledby="search-heading"
+    class="mb-6"
+  >
+
+    <h2
+      id="search-heading"
+      class="sr-only"
+    >
+      Employee Search
+    </h2>
+
+    <label
+      for="searchInput"
+      class="block mb-2 font-medium"
+    >
+      Search Employees
+    </label>
+
+    <input
+      id="searchInput"
+      type="search"
+      placeholder="Search employees..."
+      class="w-full border rounded p-3"
+    >
+
+  </section>
+
+  <section
+    aria-labelledby="table-heading"
+  >
+
+    <h2
+      id="table-heading"
+      class="text-xl font-semibold mb-4"
+    >
+      Employee Records
+    </h2>
+
+    <div
+      class="bg-white shadow rounded overflow-hidden"
+    >
+
+      <table class="w-full">
+
+        <caption class="sr-only">
+          Employee Records Table
+        </caption>
+
+        <thead class="bg-slate-200">
+
+          <tr>
+
+            <th
+              scope="col"
+              data-column="id"
+              class="cursor-pointer p-3 text-left"
+            >
+              ID
+            </th>
+
+            <th
+              scope="col"
+              data-column="name"
+              class="cursor-pointer p-3 text-left"
+            >
+              Name
+            </th>
+
+            <th
+              scope="col"
+              data-column="department"
+              class="cursor-pointer p-3 text-left"
+            >
+              Department
+            </th>
+
+            <th
+              scope="col"
+              data-column="salary"
+              class="cursor-pointer p-3 text-left"
+            >
+              Salary
+            </th>
+
+            <th
+              scope="col"
+              class="p-3"
+            >
+              Actions
+            </th>
+
+          </tr>
+
+        </thead>
+
+        <tbody id="tableBody"></tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+  <nav
+    aria-label="Pagination"
+    id="pagination"
+    class="flex justify-center gap-2 mt-4"
+  >
+  </nav>
+
+</main>
+
+</body>
   <script src="B3-script.js"></script>
 </body>
 </html>
