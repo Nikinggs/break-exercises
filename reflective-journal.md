@@ -702,6 +702,159 @@ will always return: 5
 
 -Reliability: A pure function does not change external variables or application state, reducing unexpected bugs.
 
+ENGINEERING THINKING
+
+QUESTION 01
+
+-Function composition means combining multiple functions into one function.
+
+const result = f(g(h(x)));
+
+Instead we create a reusable utility:
+
+const composed = compose(f, g, h);
+
+composed(x);
+
+which produces the same result.
+
+-Loop-Based Implementation
+
+function compose(...functions) {
+
+  return function (value) {
+
+    let result = value;
+
+    for (
+      let i = functions.length - 1;
+      i >= 0;
+      i--
+    ) {
+      result =
+      functions[i](result);
+    }
+
+    return result;
+  };
+}
+
+Example Functions
+
+function add2(x) {
+  return x + 2;
+}
+
+function multiply3(x) {
+  return x * 3;
+}
+
+function square(x) {
+  return x * x;
+}
+
+-Using compose
+
+const calculate =
+compose(
+  add2,
+  multiply3,
+  square
+);
+
+console.log(
+  calculate(2)
+);
+
+Execution:
+
+square(2) = 4
+
+multiply3(4) = 12
+
+add2(12) = 14
+
+Output: 14
+
+This follows:
+
+add2(
+  multiply3(
+    square(2)
+  )
+)
+
+which is:
+
+f(g(h(x)))
+
+-How the Loop Works
+
+Suppose we have:
+
+compose(
+  add2,
+  multiply3,
+  square
+);
+
+Internally:
+
+functions = [
+  add2,
+  multiply3,
+  square
+];
+
+The loop starts from the end:
+
+square
+↓
+multiply3
+↓
+add2
+
+This ensures:
+
+f(g(h(x)))
+
+rather than:
+
+h(g(f(x)))
+
+-Using reduce Instead of a Loop
+
+JavaScript’s reduce() can perform the same operation more elegantly.
+
+function compose(...functions) {
+
+  return function (value) {
+
+    return functions
+      .reverse()
+      .reduce(
+        (result, fn) =>
+          fn(result),
+        value
+      );
+
+  };
+}
+
+-Example
+
+const calculate =
+compose(
+  add2,
+  multiply3,
+  square
+);
+
+console.log(
+  calculate(2)
+);
+
+Output: 14
 
 
 
@@ -740,4 +893,121 @@ MY GROWTH AREAS…
 ONE THING I'LL DO DIFFERENTLY IN THE NEXT PROJECT…
 (1 specific thing)
 -i will work on how to write down my steps before jumping on the code.
+
+
+CLASS 13 - Data Structures --Arrays & object
+
+THEORY
+
+QUESTION 01
+
+QUESTION 02
+
+ENGINEERING THINKING
+
+QUESTION 01
+
+QUESTION 02
+
+
+CLASS 14 - DOM Manipulation & Events
+
+THEORY
+
+QUESTION 01
+
+QUESTION 02
+
+QUESTION 03
+
+ENGINEERING THINKING
+
+QUESTION 01
+
+PRODUCT THINKING
+
+QUESTION 01
+
+CLASS 15 - personal Dashboard Project
+
+PERSONAL REFLECTION
+
+QUESTION 01
+
+QUESTION 02
+
+QUESTION 03
+
+QUESTION 04
+
+ENGINEERING BEST PRACTICE
+
+QUESTION 01
+
+CLASS 16 - The Event Loop & Promises
+
+THEORY
+
+QUESTION 01
+
+QUESTION 02
+
+QUESTION 03
+
+ENGINEERING THINKING
+
+QUESTION 01
+
+QUESTION 02
+
+CLASS 17 - Async/Await & Fetch API
+
+THEORY
+
+QUESTION 01
+
+QUESTION 02
+
+PRODUCT THINKING
+
+QUESTION 01
+
+ENGINEERING THINKING
+
+QUESTION 01
+
+QUESTION 02
+
+CLASS 18 - intermediate Project - Movie Finder
+
+PERSONAL REFLECTION
+
+QUESTION 01
+
+QUESTION 02
+
+QUESTION 03
+
+QUESTION 04
+
+PRODUCT THINKING
+
+QUESTION 01
+
+QUESTION 02
+
+ENGINEERING BEST PRACTICE
+
+QUESTION 01
+
+QUESTION 02
+
+
+
+
+
+
+
+
+
 
