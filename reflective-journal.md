@@ -275,7 +275,7 @@ QUESTION 02
 QUESTION 03
 
 -stack
-name -> 'sarah'
+name -> 'nikinggs101'
 age -> 22
 result -> 'hello, undefined'
 
@@ -857,55 +857,242 @@ console.log(
 Output: 14
 
 
-
-
-
-
-
-
-📝 Self-Assessment Template
-
-
-BEFORE THIS BREAK, I KNEW…
-(List 3 things)
-
--Html element and its attribute
--vanilla css and tailwindcss how its used to design and style webpage
--Few thing about javascript which include object, array, loops, function and dom manipulation to some extent.
-
-DURING THIS BREAK, I LEARNED…
-(List 3 things)
--i learned more about object, array and loops
--dom manipulation to create, push value and get value from an element
--how to apply logic step by step, even though im yet to get it perfectly especially for complex project.
-
-I'M STILL CONFUSED ABOUT…
-(2 things — be honest)
--callbacks, arrow function
--how to combine different javascript syntax to arrive at a final product 
-
-MY GROWTH AREAS…
-(3 specific things)
--understood how to use html perfectly
--ive understood some specific part of javascript
--improved on tailwindcss
-
-ONE THING I'LL DO DIFFERENTLY IN THE NEXT PROJECT…
-(1 specific thing)
--i will work on how to write down my steps before jumping on the code.
-
-
 CLASS 13 - Data Structures --Arrays & object
 
 THEORY
 
 QUESTION 01
 
+-we use an array when we have a list of items, The order matters, we need to loop through the items, may add or remove items frequently.
+Example:
+const scores = [85, 92, 78, 95];
+
+-we use an object when we’re describing a single thing with properties.
+Example:
+const student = {
+  name: "nikinggs",
+  age: 27,
+  course: "Agricultural and environmental engineering"
+};
+
+Here, the data has meaningful labels:
+student.name
+student.age
+student.course
+
+rather than numeric positions.
+
+
 QUESTION 02
+-Destructuring is a JavaScript feature that lets us extract values from objects or arrays and store them in variables.
+Example: 
+const user = {
+  name: "Sarah",
+  age: 22
+};
+const name = user.name;
+const age = user.age;
+
+proper destructuring
+const { name, age } = user;
+
+-How ill extract deeply nested complex API with 
+EXAMPLE:
+Let say an API returns:
+
+const response = {
+  status: "success",
+  data: {
+    user: {
+      id: 1,
+      profle: {
+        name: "nikinggs",
+        email: "nikinggs101@gmail.com"
+      },
+      location: {
+        city: "Lagos",
+        country: "Nigeria"
+      }
+    }
+  }
+};
+
+-Without Destructuring
+
+const name =
+response.data.user.profle.name;
+
+const email =
+response.data.user.profile.email;
+
+const city =
+response.data.user.location.city;
+
+const country =
+response.data.user.location.country;
+
+This works but becomes repetitive.
+
+
+-With Nested Destructuring
+
+const {
+  data: {
+    user: {
+      profile: {
+        name,
+        email
+      },
+      location: {
+        city,
+        country
+      }
+    }
+  }
+} = response;
+
+Now we can use:
+
+console.log(name);
+console.log(email);
+console.log(city);
+console.log(country);
+
+Output:
+
+nikinggs
+nikinggs101@gmail.com
+Lagos
+Nigeria
 
 ENGINEERING THINKING
 
 QUESTION 01
+
+-To find all other by alice we will make use of the filter(), reduce(), map(), set, and object grouping.
+
+-Find All Orders by Alice
+
+We use filter() because we want all matching orders.
+
+const aliceOrders = orders.filter(
+  order => order.customer === "Alice"
+);
+
+console.log(aliceOrders);
+
+Output:
+
+[
+  {
+    id: 1,
+    customer: "Alice",
+    items: ["Pizza", "Salad"],
+    total: 45
+  },
+  {
+    id: 3,
+    customer: "Alice",
+    items: ["Burger", "Fries"],
+    total: 20
+  }
+]
+
+-Calculate Total Spent by Alice
+
+First we get Alice’s orders, then sum their totals.
+
+const totalSpentByAlice = orders
+  .filter(
+    order => order.customer === "Alice"
+  )
+  .reduce(
+    (sum, order) => sum + order.total,
+    0
+  );
+
+console.log(totalSpentByAlice);
+
+Output: 65
+
+Because: 45 + 20 = 65
+
+-Get All Unique Food Items
+
+Notice that items is an array inside each order.
+
+First we extract all items, then flatten them, then remove duplicates.
+
+const uniqueFoodItems = [
+  ...new Set(
+    orders.flatMap(
+      order => order.items
+    )
+  )
+];
+
+console.log(uniqueFoodItems);
+
+Output:
+[
+  "Pizza",
+  "Salad",
+  "Burger",
+  "Fries"
+]
+
+How it works
+
+flatMap() produces:
+
+[
+  "Pizza",
+  "Salad",
+  "Burger",
+  "Burger",
+  "Fries"
+]
+
+Then:
+
+new Set(...)
+
+removes duplicates.
+
+-Group Orders by Status
+
+Use reduce().
+
+const ordersByStatus = orders.reduce(
+  (groups, order) => {
+
+    if (!groups[order.status]) {
+      groups[order.status] = [];
+    }
+
+    groups[order.status].push(order);
+
+    return groups;
+
+  },
+  {}
+);
+
+console.log(ordersByStatus);
+
+Output:
+
+{
+  delivered: [
+    { id: 1, ... },
+    { id: 3, ... }
+  ],
+
+  pending: [
+    { id: 2, ... }
+  ]
+}
+
 
 QUESTION 02
 
@@ -916,9 +1103,62 @@ THEORY
 
 QUESTION 01
 
+-Event bubbling occurs when an event starts at the target element and propagates upward through elements before it. Event capturing is the opposite: the event travels from the outermost ancestor down to the target element. Bubbling is the default behavior in JavaScript and is commonly used for event delegation and handling dynamic content. Capturing is useful when a parent element needs to process an event before the target element, such as analytics or monitoring systems. bubbling is preferred because it is simpler and supports event delegation.
+
 QUESTION 02
 
+-Event delegation means attaching a single event listener to a parent element instead of attaching listeners to every child. This works because of event bubbling.
+
+Imagine a list of 100 buttons:
+
+<ul>
+  <li><button>Delete</button></li>
+  <li><button>Delete</button></li>
+  <li><button>Delete</button></li>
+</ul>
+instead of:
+const buttons =
+document.querySelectorAll(
+  "button"
+);
+
+buttons.forEach(button => {
+  button.addEventListener(
+    "click",
+    deleteItem
+  );
+});
+
+This creates 100 listeners for 100 buttons.
+
+With Event Delegation
+
+Attach one listener to the parent:
+
+const list =
+document.querySelector("ul");
+
+list.addEventListener(
+  "click",
+  event => {
+
+    if (
+      event.target.tagName ===
+      "BUTTON"
+    ) {
+      console.log(
+        "Delete item"
+      );
+    }
+
+  }
+);
+
+Only one listener is needed.
+
 QUESTION 03
+
+-The main security concern with innerHTML is Cross-Site Scripting (XSS). When user-provided content is inserted using innerHTML, malicious users may inject HTML or JavaScript that executes in the browser. Using createElement() and textContent is safer because the browser treats the content as plain text rather than executable HTML. For example, a comment system that displays user input should use textContent to prevent script injection attacks and improve security.
 
 ENGINEERING THINKING
 
@@ -1003,6 +1243,37 @@ QUESTION 01
 QUESTION 02
 
 
+
+📝 Self-Assessment Template
+
+
+BEFORE THIS BREAK, I KNEW…
+(List 3 things)
+
+-Html element and its attribute
+-vanilla css and tailwindcss how its used to design and style webpage
+-Few thing about javascript which include object, array, loops, function and dom manipulation to some extent.
+
+DURING THIS BREAK, I LEARNED…
+(List 3 things)
+-i learned more about object, array and loops
+-dom manipulation to create, push value and get value from an element
+-how to apply logic step by step, even though im yet to get it perfectly especially for complex project.
+
+I'M STILL CONFUSED ABOUT…
+(2 things — be honest)
+-callbacks, arrow function
+-how to combine different javascript syntax to arrive at a final product 
+
+MY GROWTH AREAS…
+(3 specific things)
+-understood how to use html perfectly
+-ive understood some specific part of javascript
+-improved on tailwindcss
+
+ONE THING I'LL DO DIFFERENTLY IN THE NEXT PROJECT…
+(1 specific thing)
+-i will work on how to write down my steps before jumping on the code.
 
 
 
