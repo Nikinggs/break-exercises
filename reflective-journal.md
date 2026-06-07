@@ -1164,9 +1164,269 @@ ENGINEERING THINKING
 
 QUESTION 01
 
+HTML (Semantic + TailwindCSS)
+
+<main class="max-w-2xl mx-auto p-6">
+  <h1 class="text-3xl font-bold mb-4">
+    Todo App
+  </h1>
+
+  <section aria-label="Add Todo">
+
+    <div class="flex gap-2">
+
+      <input
+        id="todoInput"
+        type="text"
+        placeholder="Enter a task..."
+        class="border p-2 flex-1 rounded"
+      >
+
+      <button
+        id="addBtn"
+        class="bg-blue-600 text-white px-4 py-2 rounded"
+      >
+        Add
+      </button>
+
+    </div>
+
+    <p
+      id="error"
+      class="text-red-500 mt-2"
+    ></p>
+
+  </section>
+
+  <section
+    class="mt-6"
+    aria-label="Todo List"
+  >
+
+    <ul id="todoList"></ul>
+
+  </section>
+</main>
+
+-JavaScript
+
+Load Existing Todos
+
+const todoInput =
+document.getElementById("todoInput");
+
+const addBtn =
+document.getElementById("addBtn");
+
+const todoList =
+document.getElementById("todoList");
+
+const error =
+document.getElementById("error");
+
+let todos =
+JSON.parse(
+  localStorage.getItem("todos")
+) || [];
+
+
+Save Helper
+
+function saveTodos() {
+  localStorage.setItem(
+    "todos",
+    JSON.stringify(todos)
+  );
+}
+
+
+Render Todos
+
+we will use: textContent
+NOT: innerHTML
+to prevent XSS.
+
+function renderTodos() {
+
+  todoList.innerHTML = "";
+
+  todos.forEach(todo => {
+
+    const li =
+    document.createElement("li");
+
+    li.className =
+      "border p-3 mb-2 rounded flex justify-between gap-3";
+
+    const text =
+    document.createElement("span");
+
+    text.textContent =
+      todo.text;
+
+    text.className =
+      "break-words flex-1";
+
+    const editBtn =
+    document.createElement("button");
+
+    editBtn.textContent =
+      "Edit";
+
+    editBtn.className =
+      "bg-yellow-500 text-white px-2 py-1 rounded";
+
+    editBtn.addEventListener(
+      "click",
+      () => editTodo(todo.id)
+    );
+
+    const deleteBtn =
+    document.createElement("button");
+
+    deleteBtn.textContent =
+      "Delete";
+
+    deleteBtn.className =
+      "bg-red-600 text-white px-2 py-1 rounded";
+
+    deleteBtn.addEventListener(
+      "click",
+      () => deleteTodo(todo.id)
+    );
+
+    const actions =
+    document.createElement("div");
+
+    actions.append(
+      editBtn,
+      deleteBtn
+    );
+
+    li.append(
+      text,
+      actions
+    );
+
+    todoList.appendChild(li);
+
+  });
+
+}
+
+
+Add Todo
+
+function addTodo() {
+
+  const text =
+  todoInput.value.trim();
+
+  error.textContent = "";
+
+  if (!text) {
+
+    error.textContent =
+      "Todo cannot be empty.";
+
+    return;
+  }
+
+  if (text.length > 200) {
+
+    error.textContent =
+      "Todo is too long.";
+
+    return;
+  }
+
+  todos.push({
+    id: Date.now(),
+    text
+  });
+
+  saveTodos();
+
+  renderTodos();
+
+  todoInput.value = "";
+
+}
+
+
+Edit Todo
+
+function editTodo(id) {
+
+  const todo =
+  todos.find(
+    todo => todo.id === id
+  );
+
+  const newText =
+  prompt(
+    "Edit todo",
+    todo.text
+  );
+
+  if (
+    !newText ||
+    !newText.trim()
+  ) {
+    return;
+  }
+
+  todo.text =
+  newText.trim();
+
+  saveTodos();
+
+  renderTodos();
+
+}
+
+Delete Todo
+
+function deleteTodo(id) {
+
+  todos =
+  todos.filter(
+    todo => todo.id !== id
+  );
+
+  saveTodos();
+
+  renderTodos();
+
+}
+
+Add Button Event
+
+addBtn.addEventListener(
+  "click",
+  addTodo
+);
+
+renderTodos();
+
+Edge Cases Handled
+
+Empty Input: if (!text), Prevents blank todos.
+
+XSS Attack: If user enters: <script>alert("hack")</script>
+it is stored and displayed as plain text because we used:
+textContent
+
+instead of: innerHTML
+
+Very Long Text: if (text.length > 200), prevents extremely large entries.
+
+
 PRODUCT THINKING
 
 QUESTION 01
+
+-In a real-time collaborative todo application, DOM updates must occur whenever a task is added, edited, deleted, or marked as completed by another user. Each client should receive updates through technologies such as WebSockets and update the relevant DOM elements without requiring a page refresh. Conflict handling is also important. Say if User A deletes a task while User B is editing it, the application should detect the conflict and notify User B that the task no longer exists. For a simple todo app, a conflict notification strategy is often sufficient, while more advanced systems may use record locking or versioning to prevent simultaneous modifications.
 
 CLASS 15 - personal Dashboard Project
 
@@ -1190,15 +1450,168 @@ THEORY
 
 QUESTION 01
 
+-JavaScript is single-threaded, meaning it can only execute one piece of code at a time. The Event Loop is the mechanism that allows JavaScript to perform asynchronous operations without blocking the application.
+
+-The JavaScript Event Loop is the mechanism that coordinates synchronous and asynchronous code execution. JavaScript runs code on a Call Stack, which executes one task at a time. Asynchronous callbacks such as timers are placed in the Task Queue (macrotask queue), while Promise callbacks are placed in the Microtask Queue. After the Call Stack becomes empty, JavaScript executes all pending microtasks before processing the next macrotask. This behavior is important because it determines the order in which asynchronous operations execute and helps developers avoid unexpected timing issues.
+
 QUESTION 02
 
+-Microtasks and macrotasks are two queues used by the JavaScript Event Loop. Microtasks include Promise callbacks and queueMicrotask, while macrotasks include setTimeout, setInterval, and DOM events. After the Call Stack becomes empty, JavaScript executes all pending microtasks before processing the next macrotask. Therefore, Promise.resolve().then() executes before setTimeout(…, 0), even though the timer delay is zero milliseconds.
+
 QUESTION 03
+
+-The output is 1, 4, 3, 2. First, the synchronous code executes, logging 1 and 4. The setTimeout callback is placed in the macrotask queue, while the Promise callback is placed in the microtask queue. Once the Call Stack becomes empty, the Event Loop processes all microtasks before any macrotasks, causing 3 to be logged before 2.
 
 ENGINEERING THINKING
 
 QUESTION 01
 
+-Requirement:
+
+A must finish first;
+B depends on A;
+C can run alongside B;
+Need C only if B succeeds;
+
+-function operationA() {
+  return Promise.resolve("Result A");
+}
+
+function operationB(data) {
+  return Promise.resolve(
+    Result B using ${data}
+  );
+}
+
+function operationC() {
+  return Promise.resolve("Result C");
+}
+
+operationA()
+  .then(resultA => {
+
+    const cPromise =
+      operationC();
+
+    return Promise.all([
+      operationB(resultA),
+      cPromise
+    ]);
+
+  })
+  .then(([resultB, resultC]) => {
+
+    console.log(resultB);
+    console.log(resultC);
+
+  })
+  .catch(error => {
+    console.error(error);
+  });
+
+Why?
+	B waits for A.
+	C starts immediately after A.
+	B and C run concurrently.
+	Results are available together.
+
 QUESTION 02
+
+-function delay(ms) {
+  return new Promise(resolve =>
+    setTimeout(resolve, ms)
+  );
+}
+
+let cancelled = false;
+
+function cancelOrder() {
+  cancelled = true;
+}
+
+async function pizzaDelivery() {
+
+  try {
+
+    if (cancelled)
+      throw new Error(
+        "Order cancelled"
+      );
+
+    console.log(
+      "Order placed"
+    );
+
+    await delay(200);
+
+    if (cancelled)
+      throw new Error(
+        "Order cancelled"
+      );
+
+    console.log(
+      "Prepared"
+    );
+
+    await delay(800);
+
+    if (cancelled)
+      throw new Error(
+        "Order cancelled"
+      );
+
+    console.log(
+      "Baked"
+    );
+
+    await delay(1500);
+
+    if (Math.random() < 0.1) {
+      throw new Error(
+        "Kitchen fire!"
+      );
+    }
+
+    if (cancelled)
+      throw new Error(
+        "Order cancelled"
+      );
+
+    console.log(
+      "Out for delivery"
+    );
+
+    await delay(1000);
+
+    if (cancelled)
+      throw new Error(
+        "Order cancelled"
+      );
+
+    console.log(
+      "Delivered"
+    );
+
+  } catch (error) {
+
+    console.error(
+      error.message
+    );
+
+  }
+
+}
+
+pizzaDelivery();
+
+Cancel Example
+
+setTimeout(() => {
+  cancelOrder();
+}, 1000);
+
+This would cancel the order before delivery.
+
 
 CLASS 17 - Async/Await & Fetch API
 
